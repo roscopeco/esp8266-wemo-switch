@@ -1,5 +1,5 @@
 /*
- * UdpHandler.cpp
+ * UdpServer.cpp - Encapsulates the UDP server
  *
  *  Created on: 17 Jun 2018
  *      Author: rosco

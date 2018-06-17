@@ -1,5 +1,5 @@
 /*
- * SoapHandlers.cpp -
+ * HardwareControl.cpp - Handles the hardware
  *
  *  Created on: 16 Jun 2018
  *      Author: rosco
@@ -84,7 +84,7 @@ void setRelayState(int relayNum, bool on) {
   } else {
     Serial.print("Unsupported relay #");
     Serial.print(relayNum);
-    Serial.println(" in switchRelay (0-3 are valid)");
+    Serial.println(" in setRelayState (0-3 are valid)");
   }
 }
 
@@ -94,76 +94,48 @@ bool getRelayState(int relayNum) {
   } else {
     Serial.print("Unsupported relay #");
     Serial.print(relayNum);
-    Serial.println(" in relayGetStatus (0-3 are valid)");
+    Serial.println(" in getRelayState (0-3 are valid)");
     return false;
   }
 }
 
-void ledSOS() {
-  // SOS forever
+static inline void ledReset() {
   digitalWrite(LED_MCU, HIGH);
   digitalWrite(LED_ESP, HIGH);
   delay(750);
+}
 
-  // DOT
-  digitalWrite(LED_MCU, LOW);
+// Morse DOT
+static inline void ledDot(uint8_t ledPin) {
+  digitalWrite(ledPin, LOW);
   delay(200);
 
-  digitalWrite(LED_MCU, HIGH);
+  digitalWrite(ledPin, HIGH);
   delay(250);
+}
 
-  // DOT
-  digitalWrite(LED_MCU, LOW);
-  delay(200);
-
-  digitalWrite(LED_MCU, HIGH);
-  delay(250);
-
-  // DOT
-  digitalWrite(LED_MCU, LOW);
-  delay(200);
-
-  digitalWrite(LED_MCU, HIGH);
-  delay(250);
-
+// Morse DASH
+static inline void ledDash(uint8_t ledPin) {
   // DASH
-  digitalWrite(LED_ESP, LOW);
+  digitalWrite(ledPin, LOW);
   delay(600);
 
-  digitalWrite(LED_ESP, HIGH);
+  digitalWrite(ledPin, HIGH);
   delay(250);
+}
 
-  // DASH
-  digitalWrite(LED_ESP, LOW);
-  delay(600);
+void ledSOS() {
+  ledReset();
 
-  digitalWrite(LED_ESP, HIGH);
-  delay(250);
+  ledDot(LED_MCU);
+  ledDot(LED_MCU);
+  ledDot(LED_MCU);
 
-  // DASH
-  digitalWrite(LED_ESP, LOW);
-  delay(600);
+  ledDash(LED_ESP);
+  ledDash(LED_ESP);
+  ledDash(LED_ESP);
 
-  digitalWrite(LED_ESP, HIGH);
-  delay(250);
-
-  // DOT
-  digitalWrite(LED_MCU, LOW);
-  delay(200);
-
-  digitalWrite(LED_MCU, HIGH);
-  delay(250);
-
-  // DOT
-  digitalWrite(LED_MCU, LOW);
-  delay(200);
-
-  digitalWrite(LED_MCU, HIGH);
-  delay(250);
-
-  // DOT
-  digitalWrite(LED_MCU, LOW);
-  delay(200);
-
-  digitalWrite(LED_MCU, HIGH);
+  ledDot(LED_MCU);
+  ledDot(LED_MCU);
+  ledDot(LED_MCU);
 }

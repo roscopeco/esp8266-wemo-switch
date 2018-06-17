@@ -1,5 +1,5 @@
 /*
- * WiFi.h
+ * WiFi.h - Handles WiFi connection and mDNS.
  *
  *  Created on: 17 Jun 2018
  *      Author: rosco

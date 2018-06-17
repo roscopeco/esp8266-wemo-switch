@@ -1,9 +1,10 @@
 /*
- * HttpHandlers.cpp
+ * HttpServer.cpp - Encapsulates the HTTP server
  *
  *  Created on: 16 Jun 2018
  *      Author: rosco
  */
+#include <ESP8266WebServer.h>
 #include "HardwareControl.h"
 #include "WemoSockets.h"
 #include "HttpServer.h"
@@ -33,7 +34,7 @@ bool initHttp() {
   return true;
 }
 
-void handleHttpClient() {
+void handleHttpRequest() {
   httpServer.handleClient();
 }
 

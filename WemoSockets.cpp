@@ -49,7 +49,7 @@ void setup() {
 void loop() {
   // check if the WiFi and UDP connections were successful
   if(wifiConnected){
-    handleHttpClient();
+    handleHttpRequest();
 
     delay(5);
 

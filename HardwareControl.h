@@ -1,12 +1,12 @@
 /*
- * RelayControl.h - Handles the hardware
+ * HardwareControl.h - Handles the hardware
  *
  *  Created on: 17 Jun 2018
  *      Author: rosco
  */
 
-#ifndef WEMO_SOCKETS_RELAYCONTROL_H_
-#define WEMO_SOCKETS_RELAYCONTROL_H_
+#ifndef WEMO_SOCKETS_HARDWARECONTROL_H_
+#define WEMO_SOCKETS_HARDWARECONTROL_H_
 
 #include <Arduino.h>
 
@@ -23,4 +23,4 @@ bool getRelayState(int relayNum);
 
 void ledSOS(void);
 
-#endif /* WEMO_SOCKETS_RELAYCONTROL_H_ */
+#endif /* WEMO_SOCKETS_HARDWARECONTROL_H_ */
