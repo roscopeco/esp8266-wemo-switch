@@ -22,7 +22,4 @@
 #define WIFI_SSID "<YOUR WIFI SSID>"
 #define WIFI_KEY "<YOUR WIFI KEY>"
 
-// Used elsewhere in the code to get the device name as a String.
-String getDeviceName(void);
-
 #endif /* _WEMO_SOCKETS_H_ */

@@ -9,17 +9,14 @@
 #define WEMO_SOCKETS_HARDWARECONTROL_H_
 
 #include <Arduino.h>
+#include "Relay.h"
 
 void initHardware(void);
-
-String getHardwareSerial(void);
-String getHardwarePersistentUuid(void);
 
 void setLedMcu(bool on);
 void setLedEsp(bool on);
 
-void setRelayState(int relayNum, bool on);
-bool getRelayState(int relayNum);
+void setHardwarePin(uint8_t pin, bool high);
 
 void ledSOS(void);
 

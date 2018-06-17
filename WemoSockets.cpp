@@ -14,8 +14,8 @@
 #include "WemoSockets.h"
 #include "WiFi.h"
 #include "HardwareControl.h"
-#include "HttpServer.h"
 #include "UdpServer.h"
+#include "Relay.h"
 
 static String deviceName = DEVICE_NAME;
 
@@ -34,7 +34,7 @@ void setup() {
     udpConnected = initUdp();
 
     if (udpConnected) {
-      initHttp();
+      initRelays();
     }
   }
 
@@ -49,18 +49,20 @@ void setup() {
 void loop() {
   // check if the WiFi and UDP connections were successful
   if(wifiConnected){
-    handleHttpRequest();
+    for (int i = 0; i < getNumRelays(); i++) {
+      Relay *relay = getRelay(i);
 
-    delay(5);
+      if (relay != NULL) {
+        relay->loop();
+      }
+
+      delay(5);
+    }
 
     if(udpConnected){
-      handleUdpRequest();
+      uPnPLoop();
     }
   } else {
     ledSOS();
   }
-}
-
-String getDeviceName() {
-  return deviceName;
 }

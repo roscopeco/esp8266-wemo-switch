@@ -9,6 +9,6 @@
 #define WEMO_SOCKETS_UDPSERVER_H_
 
 bool initUdp(void);
-void handleUdpRequest(void);
+void uPnPLoop(void);
 
 #endif /* WEMO_SOCKETS_UDPSERVER_H_ */
