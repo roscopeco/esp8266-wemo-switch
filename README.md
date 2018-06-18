@@ -15,9 +15,11 @@ It is currently tested with the Node MCU V2 development board, but should
 work with any ESP8266 module, although you may need to change some of the
 pin assignments in `HardwareControl.h` to suit your module and wiring.
 
-Currently only one relay is supported, although we plan to extend this
-to support four sockets in the future. The aim is to build an integrated
-solution in a standard four-gang extension.
+This project now supports (and by default, expects) four sockets to be
+connected - these will appear in the Alexa app as four separate switches.
+The switches are controlled by relays connected to the appropriate 
+digital outputs of the ESP8266. We use FOTEK SSR-40 DA relays, rated for 40A,
+but you should be able to use whatever you like.
 
 ### Installation
 
