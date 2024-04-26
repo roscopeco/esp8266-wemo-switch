@@ -1,3 +1,5 @@
+> **note**: This repository is archived and development / support is discontinued.
+
 # WeMo (uPnP) compatible firmware for a Smart Switch
 ## For the ESP8266 WiFi module.
 
